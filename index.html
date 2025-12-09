@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dhong Bang Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f5f5f7;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* ===== LOGO أعلى الصفحة في النص ===== */
+    .header-logo-row {
+      background: linear-gradient(135deg, #020617, #111827);
+      color: #f9fafb;
+    }
+
+    .header-logo-row-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 16px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .brand-main {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #22c55e, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8px 16px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.78rem;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      white-space: nowrap;
+    }
+
+    .cart-button {
+      position: relative;
+      border: none;
+      background: #111827;
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cart-count {
+      background: #22c55e;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+    }
+
+    main {
+      padding-top: 16px;
+      padding-bottom: 48px;
+    }
+
+    /* ===== HERO + العد التنازلي ===== */
+    .hero {
+      background: linear-gradient(135deg, #f9fafb, #e0f2fe);
+      border-radius: 18px;
+      padding: 24px 20px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .hero-list li::before {
+      content: "✓";
+      margin-left: 4px;
+      color: #0ea96f;
+      font-weight: bold;
+    }
+
+    .hero-list li {
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .hero-offer-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      text-align: center;
+    }
+
+    .countdown-title {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .countdown {
+      display: inline-flex;
+      gap: 8px;
+      font-family: "Segoe UI", system-ui;
+      margin-bottom: 8px;
+    }
+
+    .countdown-part {
+      background: #111827;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .countdown-label {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .new-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #0ea96f10;
+      color: #0b8b5b;
+      border: 1px dashed #0ea96f40;
+    }
+
+    /* ===== شريط الموديلات الجديدة ===== */
+    .models-strip-title {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .models-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+    }
+
+    .model-pill {
+      min-width: 140px;
+      border-radius: 12px;
+      padding: 8px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .model-pill span:first-child {
+      font-weight: 600;
+    }
+
+    .model-pill:hover {
+      border-color: #111827;
+    }
+
+    /* ===== شبكة المنتجات ===== */
+    .products-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .product-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .product-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 0.9rem;
+      color: #0b8b5b;
+    }
+
+    .product-colors {
+      display: flex;
+      gap: 4px;
+      margin: 4px 0;
+    }
+
+    .color-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+    }
+
+    .product-actions {
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: #111827;
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: #111827;
+      border: 1px solid #d1d5db;
+    }
+
+    /* ===== صفحة تفاصيل الموديل (داخل نفس الصفحة) ===== */
+    .product-detail-overlay {
+      position: fixed;
+      inset: 0;
+      background: #00000055;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+
+    .product-detail-card {
+      background: #fff;
+      max-width: 700px;
+      width: 95%;
+      border-radius: 18px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr;
+      gap: 16px;
+    }
+
+    .product-detail-img {
+      width: 100%;
+      border-radius: 14px;
+      aspect-ratio: 3 / 4;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .product-detail-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-detail-price {
+      color: #0b8b5b;
+      margin-bottom: 8px;
+    }
+
+    .product-detail-text {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .color-option {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+    }
+
+    .color-option .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+    }
+
+    .color-option.active {
+      border-color: #111827;
+      background: #f4f4f4;
+    }
+
+    .detail-actions {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .close-detail {
+      background: transparent;
+      border: none;
+      font-size: 0.8rem;
+      text-decoration: underline;
+      cursor: pointer;
+      color: #666;
+    }
+
+    /* ===== السلة ===== */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: #00000055;
+      display: none;
+      z-index: 250;
+    }
+
+    .cart-panel {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .cart-items {
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      border-bottom: 1px dashed #f1f1f1;
+    }
+
+    .cart-item span {
+      display: block;
+    }
+
+    .cart-empty {
+      font-size: 0.85rem;
+      color: #777;
+      padding: 8px 0;
+    }
+
+    .cart-total {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .cart-form label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    .cart-form input,
+    .cart-form textarea {
+      width: 100%;
+      padding: 6px 8px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 0.85rem;
+    }
+
+    .cart-form textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+
+    .note {
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .close-cart {
+      border: none;
+      background: transparent;
+      font-size: 0.85rem;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .alert {
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+
+    .alert-success {
+      color: #0b8b5b;
+    }
+
+    .alert-error {
+      color: #c0392b;
+    }
+
+    /* ===== صندوق واتساب تحت الأوردرات ===== */
+    .whatsapp-contact {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .whatsapp-contact a {
+      font-weight: 600;
+      color: #16a34a;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .whatsapp-contact small {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    /* ===== رسبونسيف ===== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .product-detail-card {
+        grid-template-columns: 1fr;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cart-panel {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- LOGO في النص فوق -->
+  <div class="header-logo-row">
+    <div class="header-logo-row-inner">
+      <div class="brand-logo">
+        <span class="brand-main">Dhong Bang</span>
+        <span class="brand-sub">STORE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="trust-badges">
+        <div class="badge">📦 معاينة قبل الاستلام</div>
+        <div class="badge">🚚 توصيل لباب البيت</div>
+        <div class="badge">💳 دفع عند الاستلام</div>
+        <div class="badge">☎ تأكيد تليفوني قبل الشحن</div>
+      </div>
+
+      <button class="cart-button" id="openCartBtn">
+        سلة المشتريات
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+    <!-- HERO + COUNTDOWN -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">أحدث موديلات Dhong Bang Store</h1>
+        <p class="hero-subtitle">
+          اختار موديلك المفضل وخلي المعاينة قبل الاستلام تطمِّنك ١٠٠٪ قبل ما تدفع.
+        </p>
+        <ul class="hero-list">
+          <li>معاينة المنتج بالكامل قبل الدفع</li>
+          <li>ترجيع فوري مع المندوب لو المنتج مش مناسب</li>
+          <li>خامات عالية – صور حقيقية من أرض الواقع</li>
+          <li>تأكيد تليفوني قبل الشحن علشان نثبت بياناتك</li>
+        </ul>
+      </div>
+
+      <div class="hero-offer-box">
+        <div class="countdown-title">العرض الخاص ساري لـ 3 ساعات فقط من الآن ⏰</div>
+        <div class="countdown" id="countdown">
+          <div>
+            <div class="countdown-part" id="cdHours">03</div>
+            <div class="countdown-label">ساعات</div>
+          </div>
+          <div>
+            <div class="countdown-part" id="cdMinutes">00</div>
+            <div class="countdown-label">دقائق</div>
+          </div>
+          <div>
+            <div class="countdown-part" id="cdSeconds">00</div>
+            <div class="countdown-label">ثواني</div>
+          </div>
+        </div>
+        <div class="new-badge">
+          سارع بالحجز الآن – الكمية محدودة 👗
+        </div>
+        <div id="countdownMessage" style="margin-top: 8px; font-size: 0.85rem;"></div>
+      </div>
+    </section>
+
+    <!-- MODELS STRIP (يتبني اوتوماتيك من products) -->
+    <section>
+      <div class="models-strip-title">أحدث الموديلات</div>
+      <div class="models-strip" id="modelsStrip"></div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section>
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+  </main>
+
+  <!-- PRODUCT DETAIL OVERLAY -->
+  <div class="product-detail-overlay" id="productDetailOverlay">
+    <div class="product-detail-card">
+      <div id="detailImage" class="product-detail-img"></div>
+      <div>
+        <h2 class="product-detail-title" id="detailTitle"></h2>
+        <div class="product-detail-price" id="detailPrice"></div>
+        <p class="product-detail-text" id="detailDesc"></p>
+
+        <div>
+          <div style="font-size:0.85rem; margin-bottom:4px;">اختار اللون:</div>
+          <div class="color-options" id="detailColors"></div>
+        </div>
+
+        <div class="detail-actions">
+          <button class="btn btn-primary" id="addToCartFromDetail">إضافة للسلة</button>
+          <button class="close-detail" id="closeDetailBtn">رجوع للموديلات</button>
+          <div style="font-size:0.8rem; color:#777;">المعاينة قبل الاستلام – الدفع بعد ما تتطمن 👌</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h3 style="font-size:1rem;">سلة المشتريات</h3>
+        <button class="close-cart" id="closeCartBtn">إغلاق</button>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-total" id="cartTotal"></div>
+
+      <div class="note">
+        🔔 بعد تأكيد الطلب هيتم التواصل معاك تليفونيًا لتأكيد البيانات قبل الشحن.
+      </div>
+
+      <form class="cart-form" id="checkoutForm">
+        <label for="customerName">الاسم الكامل</label>
+        <input type="text" id="customerName" name="customerName" required />
+
+        <label for="customerPhone">رقم الموبايل</label>
+        <input type="tel" id="customerPhone" name="customerPhone" required />
+
+        <label for="customerAddress">العنوان بالتفصيل</label>
+        <textarea id="customerAddress" name="customerAddress" required></textarea>
+
+        <label for="customerNotes">ملاحظات إضافية (المقاس – تعليمات للمندوب)</label>
+        <textarea id="customerNotes" name="customerNotes"></textarea>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:4px;" id="confirmOrderBtn">
+          تأكيد الطلب الآن
+        </button>
+      </form>
+
+      <div id="formAlert" class="alert"></div>
+
+      <!-- WHATSAPP CONTACT تحت الأوردرات -->
+      <div class="whatsapp-contact">
+        <div>للاستفسار والتواصل السريع على واتساب:</div>
+        <a href="https://wa.me/201150613959" target="_blank">01150613959</a>
+        <small>اضغط على الرقم ليفتح معاك مباشرة في تطبيق واتساب.</small>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Dhong Bang Store – معاينة قبل الاستلام | كافة الحقوق محفوظة
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // ************ بيانات 10 موديلات ************
+    const products = [
+      {
+        id: 1,
+        name: "موديل 1 – فستان كاجوال",
+        price: 450,
+        img: "https://via.placeholder.com/400x520?text=Model+1",
+        shortDesc: "فستان كاجوال مريح مناسب للخروجات اليومية.",
+        colors: [
+          { name: "أسود", code: "#000000" },
+          { name: "أزرق غامق", code: "#1d4ed8" },
+          { name: "بيج", code: "#f5deb3" }
+        ]
+      },
+      {
+        id: 2,
+        name: "موديل 2 – فستان سهرة",
+        price: 650,
+        img: "https://via.placeholder.com/400x520?text=Model+2",
+        shortDesc: "فستان سهرة أنيق للمناسبات والحفلات.",
+        colors: [
+          { name: "نبيتي", code: "#800020" },
+          { name: "أخضر زمردي", code: "#047857" }
+        ]
+      },
+      {
+        id: 3,
+        name: "موديل 3 – طقم عملي",
+        price: 520,
+        img: "https://via.placeholder.com/400x520?text=Model+3",
+        shortDesc: "طقم عملي للجامعة والشغل اليومي.",
+        colors: [
+          { name: "رمادي", code: "#6b7280" },
+          { name: "بني", code: "#8b4513" }
+        ]
+      },
+      {
+        id: 4,
+        name: "موديل 4 – عباية كاجوال",
+        price: 480,
+        img: "https://via.placeholder.com/400x520?text=Model+4",
+        shortDesc: "عباية واسعة ومريحة بخامات ناعمة.",
+        colors: [
+          { name: "أسود", code: "#000000" },
+          { name: "كحلي", code: "#1e3a8a" },
+          { name: "زيتي", code: "#365314" }
+        ]
+      },
+      {
+        id: 5,
+        name: "موديل 5 – تونيك طويل",
+        price: 390,
+        img: "https://via.placeholder.com/400x520?text=Model+5",
+        shortDesc: "تونيك طويل شيك مع بنطلون جينز أو قماش.",
+        colors: [
+          { name: "موف", code: "#a855f7" },
+          { name: "بيج فاتح", code: "#e7d5b8" }
+        ]
+      },
+      {
+        id: 6,
+        name: "موديل 6 – فستان صيفي",
+        price: 430,
+        img: "https://via.placeholder.com/400x520?text=Model+6",
+        shortDesc: "فستان صيفي خفيف مناسب للحر.",
+        colors: [
+          { name: "أبيض منقوش", code: "#f9fafb" },
+          { name: "أصفر باستيل", code: "#facc15" }
+        ]
+      },
+      {
+        id: 7,
+        name: "موديل 7 – طقم شتوي",
+        price: 700,
+        img: "https://via.placeholder.com/400x520?text=Model+7",
+        shortDesc: "طقم شتوي دافي بخامة قوية.",
+        colors: [
+          { name: "زيتي غامق", code: "#14532d" },
+          { name: "رصاصي", code: "#4b5563" }
+        ]
+      },
+      {
+        id: 8,
+        name: "موديل 8 – طقم رسمي",
+        price: 750,
+        img: "https://via.placeholder.com/400x520?text=Model+8",
+        shortDesc: "طقم رسمي مناسب للاجتماعات والمناسبات.",
+        colors: [
+          { name: "أسود", code: "#000000" },
+          { name: "رمادي غامق", code: "#374151" }
+        ]
+      },
+      {
+        id: 9,
+        name: "موديل 9 – فستان فضفاض",
+        price: 410,
+        img: "https://via.placeholder.com/400x520?text=Model+9",
+        shortDesc: "فستان واسع ومريح مناسب للمحجبات.",
+        colors: [
+          { name: "روز", code: "#f472b6" },
+          { name: "أخضر باستيل", code: "#22c55e" }
+        ]
+      },
+      {
+        id: 10,
+        name: "موديل 10 – كارديجان طويل",
+        price: 360,
+        img: "https
