@@ -50,6 +50,14 @@
 
     footer{margin-top:24px;padding:18px 0;text-align:center;color:var(--muted);font-size:14px}
 
+    /* Side menu */
+    #sideMenu{position:fixed;top:0;right:-320px;width:300px;height:100%;background:#fff;box-shadow:-6px 0 30px rgba(0,0,0,0.12);z-index:10000;padding:22px;transition:right 280ms ease}
+    #sideMenu.open{right:0}
+    #menuToggle{margin-inline-start:auto;background:transparent;border:none;cursor:pointer;font-size:28px;color:#fff}
+
+    /* Contact bar */
+    .wa-contact-bar{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#25D366;color:#fff;padding:12px 18px;border-radius:30px;box-shadow:0 8px 24px rgba(0,0,0,0.2);z-index:1000;display:flex;align-items:center;gap:12px;font-weight:700}
+
     /* Responsive */
     @media (max-width:900px){
       .logo h1{font-size:22px}
@@ -96,8 +104,20 @@
           <h1>الشركة الهندسية لصيانة الأجهزة الرياضية</h1>
           <small>للأجهزة الرياضية والكهربائية</small>
         </div>
+        <button id="menuToggle" aria-label="فتح القائمة" style="margin-inline-start:auto;background:transparent;border:none;cursor:pointer;font-size:28px;color:#fff">⋮</button>
       </div>
-    </div>
+    </div><!-- القائمة الجانبية -->
+<nav id="sideMenu">
+  <button id="closeMenu" aria-label="اغلاق" style="background:transparent;border:none;font-size:22px;display:block;margin-left:auto;cursor:pointer">✕</button>
+  <h3 style="color:#7a1530;margin-top:6px">القائمة</h3>
+  <ul style="list-style:none;padding:0;margin-top:18px;font-weight:700">
+    <li style="margin:12px 0"><a href="#contact" class="side-link" data-target="contact" style="color:#222;text-decoration:none">التواصل</a></li>
+    <li style="margin:12px 0"><a href="#tips" class="side-link" data-target="tips" style="color:#222;text-decoration:none">النصائح</a></li>
+    <li style="margin:12px 0"><a href="#warranty" class="side-link" data-target="warranty" style="color:#222;text-decoration:none">شهاده الضمان</a></li>
+    <li style="margin:12px 0"><a href="#map" class="side-link" data-target="map" style="color:#222;text-decoration:none">العنوان</a></li>
+  </ul>
+</nav>
+
   </header>  <div class="hero">
     <div class="container">
       <h1 class="main-title">الشركة الهندسية لصيانة<br>جميع أنواع الأجهزة الرياضية</h1>
@@ -107,65 +127,36 @@
   </div>  <main class="container">
       <div class="two-col">
         <div>
-          <div class="article">
+          <div id="tips" class="article">
             <h2>نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
-            <div class="tips">
-              <div class="tips-grid">
-                <img src="https://images.unsplash.com/photo-1599058918144-14a0abbe3a5f?auto=format&fit=crop&w=900&q=90" alt="جهاز مشي">
-                <div class="tips-text">
-                  <p>● يجب فحص الجهاز جيدًا قبل شرائه، فغالبًا تبدو الأجهزة الرياضية ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. <strong>يُفضل اختبار الجهاز لمدة 20 دقيقة</strong> قبل الشراء.</p>
-                  <p>● اشترِ من المتاجر المتخصصة فقط؛ فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا مستمرة.</p>
-                  <p>● بعض الأجهزة تحتاج تركيزًا ومهارة (مثل جهاز التزلج)، فاختر الجهاز الذي يناسب مستوى لياقتك وميزانيتك.</p>
-                  <p>● اختر أجهزة تركيبها سهل إذا أردت استخدامها باستمرار، وتحقّق من توفر قطع الغيار الأصلية.</p>
-                  <p>● إلى جانب جهاز المشي، الدراجة الثابتة وجهاز الدواسات خيارات ممتازة لتحسين اللياقة.</p>
-                </div>
-              </div>
+            <div class="tips" style="padding:8px 0">
+              <div class="tips-grid" style="flex-direction:column; gap:22px">
+                <div class="tip-item">
+                  <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● يجب فحص الجهاز جيدًا قبل شرائه، فغالبًا تبدو الأجهزة الرياضية ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. <strong>يُفضل اختبار الجهاز لمدة 20 دقيقة</strong> قبل الشراء.</p>
+                  <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="فحص الجهاز قبل الشراء" style="width:100%; max-width:920px; border-radius:10px; display:block;">
+                </div><div class="tip-item">
+              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● اشترِ من المتاجر المتخصصة فقط؛ فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا متكررة. تحقق دائمًا من جودة الصنع وتوفر قطع الغيار الأصلية.</p>
+              <img src="https://images.unsplash.com/photo-1585155773557-627a3b7f0f22?auto=format&fit=crop&w=1200&q=80" alt="متجر أجهزة رياضية" style="width:100%; max-width:920px; border-radius:10px; display:block;">
             </div>
-          </div>
+
+            <div class="tip-item">
+              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● بعض الأجهزة تحتاج تركيزًا ومهارة (مثل جهاز التزلج)، فاختر الجهاز الذي يناسب مستوى لياقتك وميزانيتك.</p>
+              <img src="https://images.unsplash.com/photo-1594737625785-4b5b9d0f1a6b?auto=format&fit=crop&w=1200&q=80" alt="جهاز تزلج" style="width:100%; max-width:920px; border-radius:10px; display:block;">
             </div>
+
+            <div class="tip-item">
+              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● اختر أجهزة تركيبها سهل إذا أردت استخدامها باستمرار، وتحقّق من توفر قطع الغيار الأصلية.</p>
+              <img src="https://images.unsplash.com/photo-1584999730961-2f7f6f9b3b9f?auto=format&fit=crop&w=1200&q=80" alt="قطع غيار وأدوات" style="width:100%; max-width:920px; border-radius:10px; display:block;">
+            </div>
+
+            <div class="tip-item">
+              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● إلى جانب جهاز المشي، الدراجة الثابتة وجهاز الدواسات خيارات ممتازة لتحسين اللياقة.</p>
+              <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8d56?auto=format&fit=crop&w=1200&q=80" alt="دراجة ثابتة" style="width:100%; max-width:920px; border-radius:10px; display:block;">
+            </div>
+
           </div>
-          </div><div class="article" style="margin-top:18px">
-        <h2>مقالات عن صيانة الأجهزة الرياضية</h2>
-        <p class="muted">دليل الصيانة الدوري وكيف تقلل تكاليف الإصلاح.</p>
-        <ul class="blog-list">
-          <li><a href="#">صيانة جهاز المشي خطوة بخطوة</a></li>
-          <li><a href="#">تنظيف الأجهزة وكيف يؤثر على عمرها</a></li>
-        </ul>
+        </div>
       </div>
-    </div>
-
-    <aside>
-      <div class="card">
-        <h3>قطع غيار أصلية</h3>
-        <p>نوفر قطع غيار أصلية ومضمونة للأجهزة الرياضية.</p>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <h3>اطلب معاينة</h3>
-        <p>ارسل رقم جهازك والمشكلة عبر واتساب وسنرد عليك.</p>
-        <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank">ارسال رسالة</a>
-      </div>
-    </aside>
-  </div>
-</section>
-
-<section id="contact" style="margin-top:28px">
-  <div class="card">
-    <h2>تواصل معنا</h2>
-    <p class="muted">رقم الواتساب: <strong>01080135453</strong></p>
-    <form action="#" onsubmit="event.preventDefault();alert('تم إرسال الطلب — تواصل عبر واتساب الآن');">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <input required placeholder="الاسم" style="padding:10px;border-radius:8px;border:1px solid #e6e9ef">
-        <input required placeholder="الهاتف" style="padding:10px;border-radius:8px;border:1px solid #e6e9ef">
-      </div>
-      <textarea placeholder="وصف المشكلة أو الرسالة" style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #e6e9ef"></textarea>
-      <div style="margin-top:10px;display:flex;gap:10px">
-        <button type="submit" style="padding:12px 18px;border-radius:8px;border:none;background:var(--accent);color:#fff">أرسل</button>
-        <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank">ارسال عبر واتساب</a>
-      </div>
-    </form>
-  </div>
-
 
 <!-- خريطة موقع الشركة -->
 <section id="map" style="margin-top:28px">
@@ -173,11 +164,11 @@
     <h2 style="color:#7a1530; text-align:center; margin-bottom:12px">موقعنا على الخريطة</h2>
     <p style="text-align:center; margin-bottom:16px; color:#444">اضغط على الخريطة أو الزر لفتح موقع الشركة مباشرة على Google Maps</p>
 
-    <!-- خريطة أكبر حجمًا -->
-    <div style="width:100%; height:500px; border-radius:14px; overflow:hidden; margin-bottom:18px;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sar!2seg!4v1700000000000!5m2!1sar!2seg"
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- صورة خريطة بديلة (انقر للفتح) -->
+    <div style="width:100%; height:auto; border-radius:14px; overflow:hidden; margin-bottom:18px; text-align:center;">
+      <a href="https://maps.app.goo.gl/7cq1yGyHfb4zRBJT7" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1503410753141-9b0e9b0f8b70?auto=format&fit=crop&w=1400&q=80" alt="موقع الشركة على الخريطة" style="width:100%; max-width:1100px; height:420px; object-fit:cover; border-radius:12px; display:inline-block;">
+      </a>
     </div>
 
     <!-- زر فتح الخريطة -->
@@ -196,12 +187,32 @@
   </div>
 </section>
 
-</main>  <footer>
+  </main>  <footer>
     <div class="container">
       <p>© <span id="year"></span> الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية — جميع الحقوق محفوظة.</p>
       <p>العنوان: متاح عند الطلب | الهاتف: 01080135453</p>
     </div>
-  </footer>  <script>
+  </footer>  <!-- شريط تواصل واتساب ثابت في الأسفل -->  <div class="wa-contact-bar" style="position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#25D366;color:#fff;padding:12px 18px;border-radius:30px;box-shadow:0 8px 24px rgba(0,0,0,0.2);z-index:1000;display:flex;align-items:center;gap:12px;font-weight:700">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="whatsapp" style="width:26px;height:26px">
+    <a href="https://wa.me/201080135453?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A7%D9%84%D9%85%D9%87%D9%86%D8%AF%D8%B3%20%D8%B4%D8%A7%D9%83%D8%B1%20-%20%D8%A3%D8%B1%D8%AF%20%D8%A7%D9%84%D8%AA%D9%88%D8%B5%D9%8A%D9%84" target="_blank" style="color:#fff;text-decoration:none">للتواصل مع المهندس شاكر</a>
+  </div>  <script>
+    // year
     document.getElementById('year').innerText = new Date().getFullYear();
+
+    // side menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const sideLinks = document.querySelectorAll('.side-link');
+
+    menuToggle && menuToggle.addEventListener('click', () => { sideMenu.classList.add('open'); });
+    closeMenu && closeMenu.addEventListener('click', () => { sideMenu.classList.remove('open'); });
+    sideLinks.forEach(l => l.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = e.currentTarget.getAttribute('href');
+      sideMenu.classList.remove('open');
+      if(document.querySelector(target)) document.querySelector(target).scrollIntoView({behavior:'smooth'});
+      if(target === '#contact') window.location.hash = '#contact';
+    }));
   </script></body>
 </html>
