@@ -1,291 +1,257 @@
 <!doctype html>
-
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية</title>
-  <meta name="description" content="الشركة الهندسية - صيانة الأجهزة الرياضية والأجهزة الكهربائية | ضمان 6 أشهر - دعم فني 24/7 - قطع غيار أصلية - مهندسين معتمدين.">
-  <meta name="keywords" content="صيانة أجهزة رياضية, صيانة كهربائية, قطع غيار, دعم فني 24 ساعة, ضمان 6 أشهر">
-  <meta name="robots" content="index, follow">  <!-- Open Graph -->  <meta property="og:title" content="الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية">
-  <meta property="og:description" content="ضمان 6 أشهر - دعم فني على مدار الساعة - قطع غيار أصلية - خدمات الصيانة في أي مكان">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/hero.jpg">  <link rel="icon" href="/assets/favicon.png">  <style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الشركة الهندسية لصيانة الأجهزة الرياضية</title>
+  <meta name="description" content="الشركة الهندسية - صيانة الأجهزة الرياضية | ضمان 6 أشهر - دعم فني على مدار الساعة - قطع غيار أصلية - مهندسين معتمدين.">
+  <style>
     :root{
-      --accent:#0a74da;
-      --dark:#0b2340;
-      --muted:#6b7280;
-      --brand:#7a1530;
-      --title-size:40px;
-      --section-title:32px;
-      --paragraph:20px;
-      --feature-title:22px;
-      --menu-size:22px;
+      --bg: #0B2340; /* خلفية شيك جديدة */
+      --accent: #7A1530;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --cta-green: #25D366;
+      --cta-call: #0BB;
+      --content-bg: #ffffff;
+      --radius: 12px;
     }
-
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0}
     body{
-      margin:0;
-      background:var(--brand);
-      color:#111;
-      line-height:2;
-      font-family:'Tajawal','Noto Naskh Arabic',sans-serif;
-      font-size:var(--paragraph);
-      font-weight:500;
+      font-family: 'Tajawal', 'Noto Naskh Arabic', Arial, sans-serif;
+      background:var(--bg);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.9;
     }
-
-    /* HEADER */
-    header .logo h1{
-      font-size:var(--title-size);
-      font-weight:900;
-      color:#fff;
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    /* menu toggle */
+    #menuToggle{position:fixed;right:14px;top:10px;font-size:30px;color:var(--white);background:transparent;border:0;z-index:1200;cursor:pointer}
+    /* side menu */
+    #sideMenu{position:fixed;top:0;right:-360px;width:320px;height:100%;background:var(--content-bg);color:#222;box-shadow:-8px 0 40px rgba(0,0,0,0.16);padding:22px;transition:right 260ms;z-index:1200;border-left:4px solid var(--accent)}
+    #sideMenu.open{right:0}
+    #sideMenu h3{color:var(--accent);font-size:22px;margin:6px 0 12px;font-weight:900}
+    #sideMenu a{display:block;padding:12px 6px;color:#111;text-decoration:none;font-weight:800;border-bottom:1px solid #f2f2f2}
+    #sideMenu button.close{background:transparent;border:0;font-size:22px;cursor:pointer;display:block;margin-left:auto}
+    /* header / hero */
+    header{padding:18px 0 6px}
+    .site-title{font-size:36px;font-weight:900;text-align:center;margin:10px 0}
+    .hero{padding:10px 0 24px;text-align:center}
+    .hero img{width:92%;max-width:1000px;border-radius:10px;display:block;margin:12px auto}
+    .hero .contact-line{margin-top:14px;font-weight:800;color:rgba(255,255,255,0.95)}
+    /* main content white */
+    main{background:var(--content-bg);border-top-left-radius:28px;border-top-right-radius:28px;padding:28px 22px;color:#222;margin-top:20px}
+    .section-title{color:var(--accent);font-size:34px;font-weight:900;text-align:center;margin:6px 0 18px}
+    p.lead{font-size:18px;color:#333;text-align:center;margin-bottom:20px;line-height:1.9}
+    /* features (the boxes you wanted) */
+    .features{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin:18px auto 26px}
+    .feature{width:220px;text-align:center;padding:18px;border-radius:14px}
+    .feature .icon{width:96px;height:96px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;margin:0 auto 12px}
+    .feature .icon svg{width:46px;height:46px;fill:var(--accent)}
+    .feature h4{margin:6px 0;font-size:20px;color:var(--accent);font-weight:900}
+    .feature p{margin:0;color:#555;font-size:15px}
+    /* tips list cards */
+    .tips-list{max-width:900px;margin:26px auto}
+    .tip-card{border:2px solid #efefef;border-radius:14px;padding:20px;margin-bottom:18px;background:#fff}
+    .tip-card p{color:#222;font-size:18px;margin:0 0 12px;line-height:1.9}
+    .tip-card img{width:100%;border-radius:8px;display:block}
+    /* map image & buttons */
+    .map-wrap{text-align:center;margin-top:20px}
+    .map-img{width:100%;max-width:1100px;height:420px;object-fit:cover;border-radius:12px;display:block;margin:0 auto}
+    .map-buttons{display:flex;gap:12px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+    .btn{padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:900}
+    .btn-primary{background:var(--accent);color:var(--white)}
+    .btn-call{background:var(--cta-call);color:#fff}
+    /* contact box */
+    .contact-box{text-align:center;border:2px solid #eee;border-radius:12px;padding:18px;margin:22px auto}
+    .contact-box h3{font-size:26px;color:var(--accent);margin:6px 0;font-weight:900}
+    .contact-box .btn-main{margin-top:12px;background:var(--accent);color:#fff;padding:12px 20px;border-radius:10px;display:inline-block;text-decoration:none;font-weight:900}
+    /* footer */
+    footer{margin-top:28px;padding:16px 0;text-align:center;color:var(--muted);font-size:15px}
+    /* floating buttons */
+    .float-left{position:fixed;left:16px;bottom:16px;width:64px;height:64px;border-radius:50%;background:var(--cta-green);display:flex;align-items:center;justify-content:center;z-index:1100;box-shadow:0 8px 26px rgba(0,0,0,0.25)}
+    .float-right{position:fixed;right:16px;bottom:16px;width:64px;height:64px;border-radius:50%;background:var(--cta-call);display:flex;align-items:center;justify-content:center;z-index:1100;box-shadow:0 8px 26px rgba(0,0,0,0.25)}
+    .float-left img,.float-right img{width:36px;height:36px}
+    /* responsive */
+    @media (max-width:900px){
+      .site-title{font-size:30px}
+      .section-title{font-size:30px}
+      .feature{width:46%}
+      .hero img{width:96%}
     }
-    header .logo small{
-      font-size:18px;
-      font-weight:700;
-      color:#eee;
+    @media (max-width:420px){
+      .site-title{font-size:24px}
+      .feature{width:100%}
+      .map-img{height:300px}
+      .tips-list{padding:0 8px}
     }
-    #menuToggle{
-      font-size:28px;
-      color:#fff;
-    }
-
-    /* HERO */
-    .hero .main-title{
-      font-size:44px;
-      font-weight:900;
-      color:#fff;
-    }
-    .hero div{
-      font-size:20px;
-      font-weight:700;
-      color:#fff;
-    }
-
-    /* SECTION TITLES */
-    h2{
-      font-size:var(--section-title);
-      font-weight:900;
-      color:var(--brand);
-    }
-
-    /* FEATURE BOXES */
-    .features .feature h4{
-      font-size:var(--feature-title);
-      font-weight:800;
-      color:var(--brand);
-    }
-    .features .feature p{
-      font-size:18px;
-      font-weight:500;
-    }
-
-    /* TIPS */
-    #tips h2{
-      font-size:34px;
-      font-weight:900;
-    }
-    .tip-item p{
-      font-size:20px;
-      font-weight:600;
-      color:#333;
-    }
-
-    /* SIDE MENU */
-    #sideMenu h3{
-      font-size:26px;
-      font-weight:900;
-    }
-    #sideMenu a{
-      font-size:var(--menu-size);
-      font-weight:700;
-    }
-
-    /* FOOTER */
-    footer{
-      font-size:18px;
-      font-weight:600;
-    }
-
-    /* WHATSAPP BAR */
-    .wa-contact-bar{
-      font-size:20px;
-      font-weight:900;
-    }
-  </style>  <!-- Structured Data (JSON-LD) -->  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية",
-    "image":"/assets/hero.jpg",
-    "telephone":"+201080135453",
-    "address":{
-      "@type":"PostalAddress",
-      "addressLocality":"قريب منك",
-      "addressCountry":"EG"
-    },
-    "priceRange":"",
-    "description":"خدمات صيانة الأجهزة الرياضية والكهربائية، ضمان 6 أشهر، دعم فني 24/7، قطع غيار أصلية.",
-    "sameAs":[],
-    "contactPoint":[
-      {
-        "@type":"ContactPoint",
-        "telephone":"+201080135453",
-        "contactType":"customer service",
-        "areaServed":"EG",
-        "availableLanguage":["Arabic"]
-      }
-    ]
-  }
-  </script></head>
+  </style>
+</head>
 <body>
-  <header>
-    <div class="container">
-      <div class="brand">
-        <div class="logo">
-          <h1>الشركة الهندسية لصيانة الأجهزة الرياضية</h1>
-          <small>للأجهزة الرياضية والكهربائية</small>
+
+  <!-- زر فتح القائمة -->
+  <button id="menuToggle" aria-label="القائمة">⋮</button>
+
+  <!-- القائمة الجانبية -->
+  <nav id="sideMenu" aria-hidden="true">
+    <button class="close" id="closeMenu" aria-label="اغلاق">✕</button>
+    <h3>القائمة</h3>
+    <a href="#contact" class="menu-link">التواصل</a>
+    <a href="#tips" class="menu-link">النصائح</a>
+    <a href="#warranty" class="menu-link">شهاده الضمان</a>
+    <a href="#map" class="menu-link">العنوان</a>
+  </nav>
+
+  <header class="container">
+    <div class="site-title">الشركة الهندسية لصيانة الأجهزة الرياضية</div>
+    <div class="hero">
+      <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80" alt="أجهزة رياضية - صيانة" class="hero-img">
+      <div class="contact-line">للتواصل مباشرة واتساب / تليفون: <strong>01080135453</strong></div>
+    </div>
+  </header>
+
+  <main class="container" id="topContent">
+    <!-- Features (خانات واضحة وكبيرة) -->
+    <section class="features" aria-label="مزايا الشركة">
+      <div class="feature">
+        <div class="icon" aria-hidden="true">
+          <!-- wrench svg -->
+          <svg viewBox="0 0 24 24"><path d="M22 2L20 4l-2-1-3 3 1 2-9 9-4 1 1-4 9-9-2-1 3-3 1 2 2-2 4 4z"></path></svg>
         </div>
-        <button id="menuToggle" aria-label="فتح القائمة">⋮</button>
-      </div>
-    </div><!-- القائمة الجانبية -->
-<nav id="sideMenu" aria-hidden="true">
-  <button id="closeMenu" aria-label="اغلاق" style="background:transparent;border:none;font-size:22px;display:block;margin-left:auto;cursor:pointer">✕</button>
-  <h3>القائمة</h3>
-  <ul>
-    <li><a href="#contact" class="side-link">التواصل</a></li>
-    <li><a href="#tips" class="side-link">النصائح</a></li>
-    <li><a href="#warranty" class="side-link">شهاده الضمان</a></li>
-    <li><a href="#map" class="side-link">العنوان</a></li>
-  </ul>
-</nav>
-
-  </header>  <div class="hero">
-    <div class="container">
-      <h1 class="main-title">الشركة الهندسية لصيانة<br>جميع أنواع الأجهزة الرياضية</h1>
-      <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80" alt="أجهزة رياضية - صيانة">
-      <div style="margin-top:14px;color:rgba(255,255,255,0.95);font-weight:700">للتواصل: 01080135453 — واتساب مباشر</div>
-    </div>
-  </div>  <main class="container"><!-- ميزات الشركة (خانات) -->
-<section class="features" aria-label="ميزات الشركة">
-  <div class="feature">
-    <div>
-      <h4>شهاده الضمان</h4>
-      <p>ضمان صيانه 6 شهور على جميع خدماتنا.</p>
-    </div>
-  </div>
-  <div class="feature">
-    <div>
-      <h4>قطع غيار أصلية</h4>
-      <p>قطع غيار أصلية ومعتمدة من الشركة بطول عمر افتراضي عالي.</p>
-    </div>
-  </div>
-  <div class="feature">
-    <div>
-      <h4>مهندسون متخصصون</h4>
-      <p>فريق من المهندسين والفنيين المدربين على صيانة كل أنواع الأجهزة.</p>
-    </div>
-  </div>
-  <div class="feature">
-    <div>
-      <h4>نوصل أينما كنت</h4>
-      <p>مناديب ومهندسون جاهزون لنقل وصيانة الأجهزة في أي مكان.</p>
-    </div>
-  </div>
-</section>
-  <div class="two-col">
-    <div>
-      <div class="article">
-        <h2>نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
-        <div class="tips" style="padding:8px 0">
-          <div class="tips-grid" style="flex-direction:column; gap:22px">
-            <div class="tip-item">
-              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● يجب فحص الجهاز جيدًا قبل شرائه، فغالبًا تبدو الأجهزة الرياضية ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. <strong>يُفضل اختبار الجهاز لمدة 20 دقيقة</strong> قبل الشراء.</p>
-              <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="فحص الجهاز قبل الشراء" style="width:100%; max-width:920px; border-radius:10px; display:block;">
-            </div>
-
-            <div class="tip-item">
-              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● اشترِ من المتاجر المتخصصة فقط؛ فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا متكررة. تحقق دائمًا من جودة الصنع وتوفر قطع الغيار الأصلية.</p>
-              <img src="https://images.unsplash.com/photo-1585155773557-627a3b7f0f22?auto=format&fit=crop&w=1200&q=80" alt="متجر أجهزة رياضية" style="width:100%; max-width:920px; border-radius:10px; display:block;">
-            </div>
-
-            <div class="tip-item">
-              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● بعض الأجهزة تحتاج تركيزًا ومهارة (مثل جهاز التزلج)، فاختر الجهاز الذي يناسب مستوى لياقتك وميزانيتك.</p>
-              <img src="https://images.unsplash.com/photo-1594737625785-4b5b9d0f1a6b?auto=format&fit=crop&w=1200&q=80" alt="جهاز تزلج" style="width:100%; max-width:920px; border-radius:10px; display:block;">
-            </div>
-
-            <div class="tip-item">
-              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● اختر أجهزة تركيبها سهل إذا أردت استخدامها باستمرار، وتحقّق من توفر قطع الغيار الأصلية.</p>
-              <img src="https://images.unsplash.com/photo-1584999730961-2f7f6f9b3b9f?auto=format&fit=crop&w=1200&q=80" alt="قطع غيار وأدوات" style="width:100%; max-width:920px; border-radius:10px; display:block;">
-            </div>
-
-            <div class="tip-item">
-              <p style="font-size:17px; color:#333; line-height:2; margin:0 0 8px">● إلى جانب جهاز المشي، الدراجة الثابتة وجهاز الدواسات خيارات ممتازة لتحسين اللياقة.</p>
-              <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8d56?auto=format&fit=crop&w=1200&q=80" alt="دراجة ثابتة" style="width:100%; max-width:920px; border-radius:10px; display:block;">
-            </div>
-
-          </div>
-        </div>
+        <h4>شهاده الضمان</h4>
+        <p>ضمان صيانه 6 شهور على جميع خدماتنا.</p>
       </div>
 
-<!-- خريطة موقع الشركة -->
-<section id="map" style="margin-top:28px">
-  <div class="card">
-    <h2 style="color:#7a1530; text-align:center; margin-bottom:12px">موقعنا على الخريطة</h2>
-    <p style="text-align:center; margin-bottom:16px; color:#444">اضغط على الخريطة أو الزر لفتح موقع الشركة مباشرة على Google Maps</p>
+      <div class="feature">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14h-2v-6h2v6zm0-8h-2V6h2v2z"/></svg>
+        </div>
+        <h4>قطع غيار أصلية</h4>
+        <p>قطع غيار أصلية ومعتمدة من الشركة بطول عمر افتراضي عالي.</p>
+      </div>
 
-    <!-- صورة خريطة بديلة (انقر للفتح) -->
-    <div style="width:100%; height:auto; border-radius:14px; overflow:hidden; margin-bottom:18px; text-align:center;">
-      <a href="https://maps.app.goo.gl/7cq1yGyHfb4zRBJT7" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1503410753141-9b0e9b0f8b70?auto=format&fit=crop&w=1400&q=80" alt="موقع الشركة على الخريطة" style="width:100%; max-width:1100px; height:420px; object-fit:cover; border-radius:12px; display:inline-block;">
-      </a>
-    </div>
+      <div class="feature">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>مهندسون متخصصون</h4>
+        <p>فريق من المهندسين والفنيين المدربين على صيانة كل أنواع الأجهزة.</p>
+      </div>
 
-    <!-- زر فتح الخريطة -->
-    <div style="text-align:center; margin-bottom:16px;">
-      <a href="https://maps.app.goo.gl/7cq1yGyHfb4zRBJT7" target="_blank" style="background:#7a1530; color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:700;">📍 افتح الموقع على Google Maps</a>
-    </div>
+      <div class="feature">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 8v13H4V8H2V6h20v2zM6 10h12v9H6v-9zM8 2h8v2H8z"/></svg>
+        </div>
+        <h4>نوصل أينما كنت</h4>
+        <p>مناديب ومهندسون جاهزون لنقل وصيانة الأجهزة في أي مكان.</p>
+      </div>
+    </section>
 
-    <!-- زر الاتصال -->
-    <div style="text-align:center; margin-bottom:20px;">
-      <a href="tel:01080135453" style="background:#0bb; color:#fff; padding:12px 22px; border-radius:8px; text-decoration:none; font-weight:700; font-size:18px;">📞 اتصل بنا الآن</a>
-    </div>
+    <!-- Section: نصائح -->
+    <section id="tips" class="tips-list">
+      <h2 class="section-title">نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
 
-    <!-- اسم المهندس -->
-    <p style="text-align:center; font-size:18px; color:#222; margin-top:10px; font-weight:700;">مقدم الخدمة: المهندس شاكر</p>
+      <article class="tip-card">
+        <p>● يجب فحص الجهاز جيدًا قبل شرائه؛ فغالبًا تبدو الأجهزة ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. <strong>نوصي بتجربة الجهاز لمدة 20 دقيقة</strong> قبل الشراء.</p>
+        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="فحص الجهاز">
+      </article>
 
-  </div>
-</section>
+      <article class="tip-card">
+        <p>● اشترِ من المتاجر المتخصصة فقط؛ فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا متكررة. تحقق دائمًا من جودة الصنع وتوفر قطع الغيار الأصلية.</p>
+        <img src="https://images.unsplash.com/photo-1585155773557-627a3b7f0f22?auto=format&fit=crop&w=1200&q=80" alt="متجر متخصص">
+      </article>
 
-  </main>  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية — جميع الحقوق محفوظة.</p>
-      <p>العنوان: متاح عند الطلب | الهاتف: 01080135453</p>
-    </div>
-  </footer>  <!-- شريط تواصل واتساب ثابت في الأسفل -->  <div class="wa-contact-bar" style="position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#25D366;color:#fff;padding:12px 18px;border-radius:30px;box-shadow:0 8px 24px rgba(0,0,0,0.2);z-index:1000;display:flex;align-items:center;gap:12px;font-weight:700">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="whatsapp" style="width:26px;height:26px">
-    <a href="https://wa.me/201080135453?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A7%D9%84%D9%85%D9%87%D9%86%D8%AF%D8%B3%20%D8%B4%D8%A7%D9%83%D8%B1%20-%20%D8%A3%D8%B1%D8%AF%20%D8%A7%D9%84%D8%AA%D9%88%D8%B5%D9%8A%D9%84" target="_blank" style="color:#fff;text-decoration:none">للتواصل مع المهندس شاكر</a>
-  </div>  <script>
+      <article class="tip-card">
+        <p>● بعض الأجهزة تحتاج تركيزًا ومهارة (مثل جهاز التزلج)، فاختر الجهاز الذي يناسب مستوى لياقتك وميزانيتك.</p>
+        <img src="https://images.unsplash.com/photo-1594737625785-4b5b9d0f1a6b?auto=format&fit=crop&w=1200&q=80" alt="تزلج">
+      </article>
+
+      <article class="tip-card">
+        <p>● اختر أجهزة تركيبها سهل إذا أردت استخدامها باستمرار، وتحقق من توفر قطع الغيار الأصيلة.</p>
+        <img src="https://images.unsplash.com/photo-1584999730961-2f7f6f9b3b9f?auto=format&fit=crop&w=1200&q=80" alt="قطع غيار">
+      </article>
+
+      <article class="tip-card">
+        <p>● إلى جانب جهاز المشي، الدراجة الثابتة وجهاز الدواسات خيارات ممتازة لتحسين اللياقة.</p>
+        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8d56?auto=format&fit=crop&w=1200&q=80" alt="دراجة ثابتة">
+      </article>
+    </section>
+
+    <!-- warranty/info box -->
+    <section id="warranty" class="contact-box" aria-label="ضمان وقطع غيار">
+      <h3>شهادة الضمان وقطع الغيار</h3>
+      <p>شهادة ضمان للصيانة لمدة <strong>6 شهور</strong>. قطع الغيار الأصلية متوفرة ومعتمدة من الشركة.</p>
+      <a class="btn-main" href="#contact">إتصل بنا الآن</a>
+    </section>
+
+    <!-- Map & contact -->
+    <section id="map" class="map-wrap">
+      <img src="https://images.unsplash.com/photo-1503410753141-9b0e9b0f8b70?auto=format&fit=crop&w=1400&q=80" alt="موقعنا" class="map-img">
+      <div class="map-buttons">
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/7cq1yGyHfb4zRBJT7" target="_blank" rel="noopener">📍 افتح الموقع على Google Maps</a>
+        <a class="btn btn-call" href="tel:01080135453">📞 اتصل بنا الآن</a>
+      </div>
+    </section>
+
+    <!-- contact area -->
+    <section id="contact" class="contact-box" style="margin-top:22px">
+      <h3>تواصل مع أحد مسؤولي خدمة العملاء</h3>
+      <p>للتواصل السريع واتساب: <strong>01080135453</strong> — أو عبر أرقامنا الأخرى المدرجة أدناه.</p>
+      <div style="margin-top:14px;color:#444">
+        <div style="font-weight:800;margin-bottom:10px">01118686678</div>
+        <div style="font-weight:800;margin-bottom:10px">01094646600</div>
+        <div style="font-weight:800">0233152521</div>
+      </div>
+      <a class="btn-main" href="https://wa.me/201080135453?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%B1%D8%AC%D9%89%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9" target="_blank" style="display:inline-block;margin-top:12px">للتواصل عبر واتساب</a>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> الشركة الهندسية لصيانة الأجهزة الرياضية — جميع الحقوق محفوظة.</p>
+      <p>العنوان: متوفر عند الطلب — خدمة في القاهرة وجميع المحافظات</p>
+    </footer>
+  </main>
+
+  <!-- floating action buttons -->
+  <a class="float-left" href="https://wa.me/201080135453?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85" target="_blank" aria-label="واتساب">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="whatsapp">
+  </a>
+  <a class="float-right" href="tel:01080135453" aria-label="اتصال مباشر">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.2.48 2.5.74 3.84.74a1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.34.25 2.64.73 3.84a1 1 0 01-.27 1.11l-2.34 2.84z'/></svg>" alt="call">
+  </a>
+
+  <script>
+    // year
     document.getElementById('year').innerText = new Date().getFullYear();
 
-    // side menu behavior
+    // side menu toggles
     const menuToggle = document.getElementById('menuToggle');
     const sideMenu = document.getElementById('sideMenu');
     const closeMenu = document.getElementById('closeMenu');
-    const sideLinks = document.querySelectorAll('.side-link');
+    const menuLinks = document.querySelectorAll('.menu-link');
 
     function openMenu(){ sideMenu.classList.add('open'); sideMenu.setAttribute('aria-hidden','false'); }
     function closeMenuFn(){ sideMenu.classList.remove('open'); sideMenu.setAttribute('aria-hidden','true'); }
 
-    if(menuToggle) menuToggle.addEventListener('click', openMenu);
-    if(closeMenu) closeMenu.addEventListener('click', closeMenuFn);
-    sideLinks.forEach(l => l.addEventListener('click', (e)=>{
-      // smooth scroll to target section on main page
-      const href = e.currentTarget.getAttribute('href');
-      closeMenuFn();
-      setTimeout(()=>{
-        const el = document.querySelector(href);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-      }, 250);
-    }));
-  </script></body>
+    menuToggle && menuToggle.addEventListener('click', openMenu);
+    closeMenu && closeMenu.addEventListener('click', closeMenuFn);
+    // close on outside click
+    document.addEventListener('click', (e)=>{
+      if(!sideMenu.contains(e.target) && !menuToggle.contains(e.target)) closeMenuFn();
+    });
+    // scroll to sections
+    menuLinks.forEach(l=>{
+      l.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        closeMenuFn();
+        const href = l.getAttribute('href');
+        setTimeout(()=>{
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 200);
+      });
+    });
+  </script>
+</body>
 </html>
