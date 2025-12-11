@@ -45,27 +45,27 @@
     main{background:var(--content-bg);border-top-left-radius:28px;border-top-right-radius:28px;padding:28px 22px;color:#222;margin-top:20px}
     .section-title{color:var(--accent);font-size:34px;font-weight:900;text-align:center;margin:6px 0 18px}
     p.lead{font-size:18px;color:#333;text-align:center;margin-bottom:20px;line-height:1.9}
-    /* features (the boxes you wanted) */
+    /* features (الصور الدائرية لكل خانة) */
     .features{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin:18px auto 26px}
     .feature{width:220px;text-align:center;padding:18px;border-radius:14px}
-    .feature .icon{width:96px;height:96px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;margin:0 auto 12px}
-    .feature .icon svg{width:46px;height:46px;fill:var(--accent)}
+    .feature .icon{width:96px;height:96px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;margin:0 auto 12px;overflow:hidden}
+    .feature .icon img{width:100%;height:100%;object-fit:cover;display:block}
     .feature h4{margin:6px 0;font-size:20px;color:var(--accent);font-weight:900}
     .feature p{margin:0;color:#555;font-size:15px}
     /* tips list cards */
     .tips-list{max-width:900px;margin:26px auto}
-    .tip-card{border:2px solid #efefef;border-radius:14px;padding:20px;margin-bottom:18px;background:#fff}
-    .tip-card p{color:#222;font-size:18px;margin:0 0 12px;line-height:1.9}
-    .tip-card img{width:100%;border-radius:8px;display:block}
-    /* map image & buttons */
+    .tip-card{border:2px solid #efefef;border-radius:14px;padding:20px;margin-bottom:18px;background:#fff;display:flex;gap:14px;align-items:center}
+    .tip-card p{color:#222;font-size:18px;margin:0 0 12px;line-height:1.9;flex:1}
+    .tip-card img{width:180px;border-radius:8px;object-fit:cover}
+    /* map iframe & buttons */
     .map-wrap{text-align:center;margin-top:20px}
-    .map-img{width:100%;max-width:1100px;height:420px;object-fit:cover;border-radius:12px;display:block;margin:0 auto}
+    .map-img{width:100%;max-width:1100px;height:420px;border-radius:12px;display:block;margin:0 auto;border:0}
     .map-buttons{display:flex;gap:12px;justify-content:center;margin-top:14px;flex-wrap:wrap}
     .btn{padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:900}
     .btn-primary{background:var(--accent);color:var(--white)}
     .btn-call{background:var(--cta-call);color:#fff}
     /* contact box */
-    .contact-box{text-align:center;border:2px solid #eee;border-radius:12px;padding:18px;margin:22px auto}
+    .contact-box{text-align:center;border:2px solid #eee;border-radius:12px;padding:18px;margin:22px auto;background:#fff}
     .contact-box h3{font-size:26px;color:var(--accent);margin:6px 0;font-weight:900}
     .contact-box .btn-main{margin-top:12px;background:var(--accent);color:#fff;padding:12px 20px;border-radius:10px;display:inline-block;text-decoration:none;font-weight:900}
     /* footer */
@@ -80,6 +80,8 @@
       .section-title{font-size:30px}
       .feature{width:46%}
       .hero img{width:96%}
+      .tip-card{flex-direction:column}
+      .tip-card img{width:100%;height:200px}
     }
     @media (max-width:420px){
       .site-title{font-size:24px}
@@ -107,18 +109,18 @@
   <header class="container">
     <div class="site-title">الشركة الهندسية لصيانة الأجهزة الرياضية</div>
     <div class="hero">
-      <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80" alt="أجهزة رياضية - صيانة" class="hero-img">
-      <div class="contact-line">للتواصل مباشرة واتساب / تليفون: <strong>01080135453</strong></div>
+      <!-- صورة هيرو جديدة: جهاز مشي شخص يركض -->
+      <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="شخص يجري على جهاز مشي" class="hero-img">
+      <div class="contact-line">للتواصل واتساب / تليفون: <strong>01080135453</strong> — <strong>المهندس شاكر</strong></div>
     </div>
   </header>
 
   <main class="container" id="topContent">
-    <!-- Features (خانات واضحة وكبيرة) -->
+    <!-- Features (خانات مع صور دائرية ذكية) -->
     <section class="features" aria-label="مزايا الشركة">
       <div class="feature">
         <div class="icon" aria-hidden="true">
-          <!-- wrench svg -->
-          <svg viewBox="0 0 24 24"><path d="M22 2L20 4l-2-1-3 3 1 2-9 9-4 1 1-4 9-9-2-1 3-3 1 2 2-2 4 4z"></path></svg>
+          <img src="https://images.unsplash.com/photo-1583454110554-21f6b6f0b7d9?auto=format&fit=crop&w=600&q=80" alt="ضمان">
         </div>
         <h4>شهاده الضمان</h4>
         <p>ضمان صيانه 6 شهور على جميع خدماتنا.</p>
@@ -126,7 +128,7 @@
 
       <div class="feature">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14h-2v-6h2v6zm0-8h-2V6h2v2z"/></svg>
+          <img src="https://images.unsplash.com/photo-1581093588401-6c9d6d0b3e8f?auto=format&fit=crop&w=600&q=80" alt="قطع غيار">
         </div>
         <h4>قطع غيار أصلية</h4>
         <p>قطع غيار أصلية ومعتمدة من الشركة بطول عمر افتراضي عالي.</p>
@@ -134,7 +136,7 @@
 
       <div class="feature">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <img src="https://images.unsplash.com/photo-1581091215367-6f0f3b5b2b7d?auto=format&fit=crop&w=600&q=80" alt="مهندسون">
         </div>
         <h4>مهندسون متخصصون</h4>
         <p>فريق من المهندسين والفنيين المدربين على صيانة كل أنواع الأجهزة.</p>
@@ -142,40 +144,40 @@
 
       <div class="feature">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M20 8v13H4V8H2V6h20v2zM6 10h12v9H6v-9zM8 2h8v2H8z"/></svg>
+          <img src="https://images.unsplash.com/photo-1582719478250-8f3b2b7f3a5f?auto=format&fit=crop&w=600&q=80" alt="نوصلك">
         </div>
         <h4>نوصل أينما كنت</h4>
         <p>مناديب ومهندسون جاهزون لنقل وصيانة الأجهزة في أي مكان.</p>
       </div>
     </section>
 
-    <!-- Section: نصائح -->
+    <!-- Section: نصائح (كل نص مع صورة ذكية على اليمين) -->
     <section id="tips" class="tips-list">
       <h2 class="section-title">نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
 
       <article class="tip-card">
         <p>● يجب فحص الجهاز جيدًا قبل شرائه؛ فغالبًا تبدو الأجهزة ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. <strong>نوصي بتجربة الجهاز لمدة 20 دقيقة</strong> قبل الشراء.</p>
-        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="فحص الجهاز">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80" alt="فحص جهاز">
       </article>
 
       <article class="tip-card">
         <p>● اشترِ من المتاجر المتخصصة فقط؛ فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا متكررة. تحقق دائمًا من جودة الصنع وتوفر قطع الغيار الأصلية.</p>
-        <img src="https://images.unsplash.com/photo-1585155773557-627a3b7f0f22?auto=format&fit=crop&w=1200&q=80" alt="متجر متخصص">
+        <img src="https://images.unsplash.com/photo-1555529771-8a0b48f0f4c1?auto=format&fit=crop&w=800&q=80" alt="متجر متخصص">
       </article>
 
       <article class="tip-card">
         <p>● بعض الأجهزة تحتاج تركيزًا ومهارة (مثل جهاز التزلج)، فاختر الجهاز الذي يناسب مستوى لياقتك وميزانيتك.</p>
-        <img src="https://images.unsplash.com/photo-1594737625785-4b5b9d0f1a6b?auto=format&fit=crop&w=1200&q=80" alt="تزلج">
+        <img src="https://images.unsplash.com/photo-1594737625785-4b5b9d0f1a6b?auto=format&fit=crop&w=800&q=80" alt="تزلج">
       </article>
 
       <article class="tip-card">
         <p>● اختر أجهزة تركيبها سهل إذا أردت استخدامها باستمرار، وتحقق من توفر قطع الغيار الأصيلة.</p>
-        <img src="https://images.unsplash.com/photo-1584999730961-2f7f6f9b3b9f?auto=format&fit=crop&w=1200&q=80" alt="قطع غيار">
+        <img src="https://images.unsplash.com/photo-1584999730961-2f7f6f9b3b9f?auto=format&fit=crop&w=800&q=80" alt="قطع غيار">
       </article>
 
       <article class="tip-card">
         <p>● إلى جانب جهاز المشي، الدراجة الثابتة وجهاز الدواسات خيارات ممتازة لتحسين اللياقة.</p>
-        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8d56?auto=format&fit=crop&w=1200&q=80" alt="دراجة ثابتة">
+        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8d56?auto=format&fit=crop&w=800&q=80" alt="دراجة ثابتة">
       </article>
     </section>
 
@@ -188,28 +190,27 @@
 
     <!-- Map & contact -->
     <section id="map" class="map-wrap">
-      <img src="https://images.unsplash.com/photo-1503410753141-9b0e9b0f8b70?auto=format&fit=crop&w=1400&q=80" alt="موقعنا" class="map-img">
+      <!-- تضمين خريطة Google مفعّلة (embed) -->
+      <iframe class="map-img" src="https://maps.google.com/maps?q=7cq1yGyHfb4zRBJT7&output=embed" allowfullscreen="" loading="lazy"></iframe>
       <div class="map-buttons">
         <a class="btn btn-primary" href="https://maps.app.goo.gl/7cq1yGyHfb4zRBJT7" target="_blank" rel="noopener">📍 افتح الموقع على Google Maps</a>
         <a class="btn btn-call" href="tel:01080135453">📞 اتصل بنا الآن</a>
       </div>
     </section>
 
-    <!-- contact area -->
+    <!-- contact area (محدّث: رقم المهندس شاكر فقط) -->
     <section id="contact" class="contact-box" style="margin-top:22px">
       <h3>تواصل مع أحد مسؤولي خدمة العملاء</h3>
-      <p>للتواصل السريع واتساب: <strong>01080135453</strong> — أو عبر أرقامنا الأخرى المدرجة أدناه.</p>
+      <p>للتواصل السريع واتساب: <strong>01080135453</strong> — <strong>المهندس شاكر</strong></p>
       <div style="margin-top:14px;color:#444">
-        <div style="font-weight:800;margin-bottom:10px">01118686678</div>
-        <div style="font-weight:800;margin-bottom:10px">01094646600</div>
-        <div style="font-weight:800">0233152521</div>
+        <div style="font-weight:900;margin-bottom:8px">المهندس شاكر — 01080135453</div>
       </div>
-      <a class="btn-main" href="https://wa.me/201080135453?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%B1%D8%AC%D9%89%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9" target="_blank" style="display:inline-block;margin-top:12px">للتواصل عبر واتساب</a>
+      <a class="btn-main" href="https://wa.me/201080135453?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A7%D9%84%D9%85%D9%87%D9%86%D8%AF%D8%B3%20%D8%B4%D8%A7%D9%83%D8%B1" target="_blank" style="display:inline-block;margin-top:12px">للتواصل عبر واتساب</a>
     </section>
 
     <footer>
       <p>© <span id="year"></span> الشركة الهندسية لصيانة الأجهزة الرياضية — جميع الحقوق محفوظة.</p>
-      <p>العنوان: متوفر عند الطلب — خدمة في القاهرة وجميع المحافظات</p>
+      <p>خدمة في القاهرة وجميع المحافظات</p>
     </footer>
   </main>
 
