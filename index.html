@@ -11,48 +11,56 @@
   <meta property="og:description" content="ضمان 6 أشهر - دعم فني على مدار الساعة - قطع غيار أصلية - خدمات الصيانة في أي مكان">
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/hero.jpg">  <link rel="icon" href="/assets/favicon.png">  <style>
-    :root{
-      --accent:#0a74da;
-      --dark:#0b2340;
-      --muted:#6b7280;
-      font-family: 'Tajawal', 'Noto Naskh Arabic', Arial, sans-serif;
-    }
+    :root{--accent:#0a74da;--dark:#0b2340;--muted:#6b7280;--brand:#7a1530}
     html,body{height:100%;}
-    body{margin:0;background:#f7f9fc;color:#111;line-height:1.6}
+    body{margin:0;background:var(--brand);color:#111;line-height:1.6;font-family: 'Tajawal', 'Noto Naskh Arabic', Arial, sans-serif}
     .container{max-width:1100px;margin:0 auto;padding:20px}
 
-    header{background:#fff;padding:18px 0;border-bottom:1px solid #e6e9ef}
+    /* Header & Hero */
+    header{background:transparent;padding:28px 0}
     .brand{display:flex;align-items:center;gap:18px}
-    .logo{display:flex;flex-direction:column;align-items:flex-start}
-    .logo h1{font-size:20px;margin:0;color:var(--dark)}
-    .hero{display:flex;gap:24px;align-items:center;padding:28px 0}
-    .hero img{max-width:540px;width:100%;border-radius:8px;box-shadow:0 6px 20px rgba(11,35,64,0.06)}
-    .hero .cta{flex:1}
-    .whatsapp-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:12px 16px;border-radius:8px;text-decoration:none;font-weight:700}
+    .logo h1{font-size:28px;margin:0;color:#fff;font-weight:800}
+    .logo small{color:rgba(255,255,255,0.9);font-weight:600}
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .hero{background:transparent;padding:8px 0 30px;display:block;text-align:center}
+    .hero .main-title{color:#fff;font-size:36px;font-weight:800;margin:18px 0}
+    .hero img{max-width:90%;height:auto;border-radius:6px;display:block;margin:12px auto}
+
+    /* Big centered sections like screenshots */
+    .big-section{background:transparent;color:#fff;text-align:center;padding:36px 12px}
+    .big-section h2{font-size:34px;margin:10px 0;font-weight:800}
+    .big-section p.lead{font-size:22px;margin-top:12px;color:#fff}
+    .big-section p.small{font-size:16px;color:rgba(255,255,255,0.9);margin-top:8px}
+
+    /* Cards and content area (white background) */
+    main{background:#fff;border-radius:12px;padding:18px;margin-top:18px}
     .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 4px 18px rgba(11,35,64,0.04)}
-    .card h3{margin:8px 0 4px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
 
-    /* Blog & Articles */
-    .two-col{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:30px}
-    .article{background:#fff;padding:16px;border-radius:10px}
-    .article h2{margin-top:0}
-    .blog-list{list-style:none;padding:0;margin:0}
-    .blog-list li{padding:12px 0;border-bottom:1px solid #eef2f7}
+    /* Tips styling like screenshot */
+    .tips{background:#fff;border-radius:10px;padding:22px;margin-top:18px}
+    .tips h2{color:var(--brand);font-size:28px;text-align:center;margin-bottom:18px}
+    .tips .tips-grid{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+    .tips img{width:320px;border-radius:10px}
+    .tips .tips-text{flex:1;color:#333;font-size:16px;line-height:2}
 
-    footer{margin-top:40px;padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
+    /* Floating WhatsApp buttons */
+    .float-whatsapp{position:fixed;bottom:22px;left:18px;background:#25D366;border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25);z-index:999}
+    .float-call{position:fixed;bottom:22px;right:18px;background:#0bb;/*green-ish*/border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25);z-index:999}
+    .float-whatsapp img,.float-call img{width:36px;height:36px}
+
+    footer{margin-top:24px;padding:18px 0;text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
     @media (max-width:900px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .two-col{grid-template-columns:1fr}
-      .hero{flex-direction:column}
+      .logo h1{font-size:22px}
+      .hero .main-title{font-size:28px}
+      .tips img{width:240px}
     }
     @media (max-width:520px){
-      .grid{grid-template-columns:1fr}
-      .brand{flex-direction:column;align-items:flex-start}
+      .container{padding:12px}
+      .hero .main-title{font-size:26px}
+      .tips img{width:180px}
+      .float-whatsapp,.float-call{width:56px;height:56px}
     }
   </style>  <!-- Structured Data (JSON-LD) -->  <script type="application/ld+json">
   {
@@ -85,71 +93,38 @@
     <div class="container">
       <div class="brand">
         <div class="logo">
-          <!-- استبدل هذا باللوجو الحقيقي (SVG أو PNG) -->
-          <h1>الشركة الهندسية لصيانة الأجهزة الرياضية<br><small style="color:var(--muted);font-weight:600">للأجهزة الرياضية والكهربائية</small></h1>
-        </div>
-        <div style="margin-inline-start:auto;display:flex;gap:12px;align-items:center">
-          <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank" rel="noopener">📞 تواصل عبر واتساب</a>
+          <h1>الشركة الهندسية لصيانة الأجهزة الرياضية</h1>
+          <small>للأجهزة الرياضية والكهربائية</small>
         </div>
       </div>
     </div>
-  </header>  <main class="container">
-    <section class="hero">
-      <div class="cta">
-        <h2>صيانة احترافية للأجهزة الرياضية — فريق مهندسين معتمد</h2>
-        <p style="color:var(--muted)">ضمان 6 أشهر على أعمال الصيانة. دعم فني متاح على مدار الساعة. نوصل أي مكان حيثما كنت.</p><div style="margin-top:18px;display:flex;gap:12px">
-      <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank" rel="noopener">📞 تواصل عبر واتساب</a>
-      <a href="#contact" style="padding:12px 16px;border-radius:8px;border:1px solid var(--accent);text-decoration:none;font-weight:700">اطلب خدمة الآن</a>
+  </header>  <div class="hero">
+    <div class="container">
+      <h1 class="main-title">الشركة الهندسية لصيانة<br>جميع أنواع الأجهزة الرياضية</h1>
+      <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80" alt="أجهزة رياضية - صيانة">
+      <div style="margin-top:14px;color:rgba(255,255,255,0.95);font-weight:700">للتواصل: 01080135453 — واتساب مباشر</div>
     </div>
-
-    <div style="margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
-      <div class="card"><h3>ضمان 6 أشهر</h3><p>نقدّم ضمانًا على جميع خدماتنا لمدة 6 أشهر.</p></div>
-      <div class="card"><h3>دعم فني 24/7</h3><p>فريقنا جاهز للرد أثناء اليوم كله.</p></div>
-      <div class="card"><h3>نوصلك أي مكان</h3><p>خدمة ميدانية في جميع المحافظات.</p></div>
-      <div class="card"><h3>مهندسين ذوي كفاءة</h3><p>فريق مؤهل لصيانة الأجهزة الحديثة.</p></div>
-    </div>
-
-  </div>
-  <div>
-    <img src="/assets/hero.jpg" alt="فريق صيانة الأجهزة الرياضية الحديثة">
-  </div>
-</section>
-
-<section id="service-area" style="margin-top:20px">
-  <div class="card">
-    <h2>صيانة أجهزة رياضية فى القاهرة وجميع المحافظات</h2>
-    <p>هل لديك مشكلة مع أي نوع من الأجهزة الرياضية؟ هل أنت من سكان القاهرة؟ لا تتردد فى التواصل معنا ليصلك مهندسو وفنيو الشركة الهندسية لصيانة الأجهزة الرياضية حتى باب البيت فى أسرع وقت.</p>
-    <p>فريق المهندسين والفنيين لدينا مجهز ومدرب على التعامل مع كافة أنواع الأجهزة الرياضية، مع توفير قطع غيار أصلية تتميز بطول العمر الافتراضى، بالإضافة إلى وجود وسائل نقل خاصة لنقل الأجهزة إلى مركز الصيانة فى حالة الحاجة إلى ذلك.</p>
-  </div>
-</section>
-
-<section id="about" style="margin-top:20px">
-  <div class="card">
-    <h2>من نحن</h2>
-    <p>تعتمد الشركة الهندسية لصيانة الاجهزة الرياضية فى الأساس على معيار الجودة ورضا العملاء وتجد ذلك ملموسا من بداية اتصالك بخدمة العملاء حتى إنتهاء الفنى من صيانة منتجك، فنحن نقدم الحلول المثلى لعملائنا حتى نحوز على رضاهم ولنساعدهم للوصول الى نمط حياة أفضل.</p>
-    <p>إضافة إلى ذلك فنحن فى مراكز خدمة عملاء الشركة الهندسية لصيانة الاجهزة الرياضية نسعى لإضافة عملاء جدد فى سجل عملائنا الذين نفخر بانضمامهم إلىنا.</p>
-  </div>
-</section>
-
-<section style="margin-top:26px">
-  <div class="two-col">
-    <div>
-      <div class="article">
-        <h2>نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
-        <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
-          <img src="https://images.unsplash.com/photo-1599058918144-14a0abbe3a5f?auto=format&fit=crop&w=900&q=90" alt="نصائح قبل شراء الأجهزة الرياضية" style="width:260px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
-          <div style="flex:1; line-height:1.9; font-size:15px; color:#444;">
-            <p>● يجب فحص الجهاز جيدًا قبل شرائه، فغالبًا تبدو الأجهزة الرياضية ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. يُفضل اختبار الجهاز لمدة لا تقل عن 20 دقيقة قبل قرار الشراء.</p>
-            <p>● لا تهمل متابعة الجديد في الأسواق، واحرص على شراء الأجهزة من أماكن متخصصة فقط، فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا متكررة.</p>
-            <p>● بعض الأجهزة تبدو سهلة عند مشاهدتها على التلفاز لكنها قد لا تناسبك. مثلًا جهاز التزلج يمنح تدريبًا شاملًا لكنه يحتاج تركيزًا وتناسقًا أكبر، بينما يفضل كثيرون الأجهزة سهلة الاستخدام.</p>
-            <p>● عند شراء أجهزة لتقوية العضلات، اختر جهازًا سهل التركيب، لأن الأجهزة المعقدة غالبًا لا يتم استخدامها بالشكل الكافي.</p>
-            <p>● رغم أن جهاز المشي هو الأكثر انتشارًا، إلا أن الدراجة الثابتة وجهاز الدواسات خيارات ممتازة أيضًا لرفع اللياقة البدنية.</p>
+  </div>  <main class="container">
+      <div class="two-col">
+        <div>
+          <div class="article">
+            <h2>نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
+            <div class="tips">
+              <div class="tips-grid">
+                <img src="https://images.unsplash.com/photo-1599058918144-14a0abbe3a5f?auto=format&fit=crop&w=900&q=90" alt="جهاز مشي">
+                <div class="tips-text">
+                  <p>● يجب فحص الجهاز جيدًا قبل شرائه، فغالبًا تبدو الأجهزة الرياضية ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. <strong>يُفضل اختبار الجهاز لمدة 20 دقيقة</strong> قبل الشراء.</p>
+                  <p>● اشترِ من المتاجر المتخصصة فقط؛ فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا مستمرة.</p>
+                  <p>● بعض الأجهزة تحتاج تركيزًا ومهارة (مثل جهاز التزلج)، فاختر الجهاز الذي يناسب مستوى لياقتك وميزانيتك.</p>
+                  <p>● اختر أجهزة تركيبها سهل إذا أردت استخدامها باستمرار، وتحقّق من توفر قطع الغيار الأصلية.</p>
+                  <p>● إلى جانب جهاز المشي، الدراجة الثابتة وجهاز الدواسات خيارات ممتازة لتحسين اللياقة.</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      </div>
-
-      <div class="article" style="margin-top:18px">
+            </div>
+          </div>
+          </div><div class="article" style="margin-top:18px">
         <h2>مقالات عن صيانة الأجهزة الرياضية</h2>
         <p class="muted">دليل الصيانة الدوري وكيف تقلل تكاليف الإصلاح.</p>
         <ul class="blog-list">
@@ -190,9 +165,38 @@
       </div>
     </form>
   </div>
+
+
+<!-- خريطة موقع الشركة -->
+<section id="map" style="margin-top:28px">
+  <div class="card">
+    <h2 style="color:#7a1530; text-align:center; margin-bottom:12px">موقعنا على الخريطة</h2>
+    <p style="text-align:center; margin-bottom:16px; color:#444">اضغط على الخريطة أو الزر لفتح موقع الشركة مباشرة على Google Maps</p>
+
+    <!-- خريطة أكبر حجمًا -->
+    <div style="width:100%; height:500px; border-radius:14px; overflow:hidden; margin-bottom:18px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sar!2seg!4v1700000000000!5m2!1sar!2seg"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- زر فتح الخريطة -->
+    <div style="text-align:center; margin-bottom:16px;">
+      <a href="https://maps.app.goo.gl/7cq1yGyHfb4zRBJT7" target="_blank" style="background:#7a1530; color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:700;">📍 افتح الموقع على Google Maps</a>
+    </div>
+
+    <!-- زر الاتصال -->
+    <div style="text-align:center; margin-bottom:20px;">
+      <a href="tel:01080135453" style="background:#0bb; color:#fff; padding:12px 22px; border-radius:8px; text-decoration:none; font-weight:700; font-size:18px;">📞 اتصل بنا الآن</a>
+    </div>
+
+    <!-- اسم المهندس -->
+    <p style="text-align:center; font-size:18px; color:#222; margin-top:10px; font-weight:700;">مقدم الخدمة: المهندس شاكر</p>
+
+  </div>
 </section>
 
-  </main>  <footer>
+</main>  <footer>
     <div class="container">
       <p>© <span id="year"></span> الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية — جميع الحقوق محفوظة.</p>
       <p>العنوان: متاح عند الطلب | الهاتف: 01080135453</p>
