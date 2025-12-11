@@ -1,527 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <title>موقع متعدد الأقسام</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية</title>
+  <meta name="description" content="الشركة الهندسية - صيانة الأجهزة الرياضية والأجهزة الكهربائية | ضمان 6 أشهر - دعم فني 24/7 - قطع غيار أصلية - مهندسين معتمدين.">
+  <meta name="keywords" content="صيانة أجهزة رياضية, صيانة كهربائية, قطع غيار, دعم فني 24 ساعة, ضمان 6 أشهر">
+  <meta name="robots" content="index, follow">  <!-- Open Graph -->  <meta property="og:title" content="الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية">
+  <meta property="og:description" content="ضمان 6 أشهر - دعم فني على مدار الساعة - قطع غيار أصلية - خدمات الصيانة في أي مكان">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/hero.jpg">  <link rel="icon" href="/assets/favicon.png">  <style>
+    :root{
+      --accent:#0a74da;
+      --dark:#0b2340;
+      --muted:#6b7280;
+      font-family: 'Tajawal', 'Noto Naskh Arabic', Arial, sans-serif;
     }
+    html,body{height:100%;}
+    body{margin:0;background:#f7f9fc;color:#111;line-height:1.6}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
 
-    body {
-      background: #f5f5f7;
-      color: #222;
-      line-height: 1.7;
+    header{background:#fff;padding:18px 0;border-bottom:1px solid #e6e9ef}
+    .brand{display:flex;align-items:center;gap:18px}
+    .logo{display:flex;flex-direction:column;align-items:flex-start}
+    .logo h1{font-size:20px;margin:0;color:var(--dark)}
+    .hero{display:flex;gap:24px;align-items:center;padding:28px 0}
+    .hero img{max-width:540px;width:100%;border-radius:8px;box-shadow:0 6px 20px rgba(11,35,64,0.06)}
+    .hero .cta{flex:1}
+    .whatsapp-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:12px 16px;border-radius:8px;text-decoration:none;font-weight:700}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 4px 18px rgba(11,35,64,0.04)}
+    .card h3{margin:8px 0 4px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Blog & Articles */
+    .two-col{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:30px}
+    .article{background:#fff;padding:16px;border-radius:10px}
+    .article h2{margin-top:0}
+    .blog-list{list-style:none;padding:0;margin:0}
+    .blog-list li{padding:12px 0;border-bottom:1px solid #eef2f7}
+
+    footer{margin-top:40px;padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .two-col{grid-template-columns:1fr}
+      .hero{flex-direction:column}
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
+    @media (max-width:520px){
+      .grid{grid-template-columns:1fr}
+      .brand{flex-direction:column;align-items:flex-start}
     }
-
-    /* الهيدر */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .logo {
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: #e91e63;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-
-    nav li a {
-      padding: 0.4rem 0.7rem;
-      border-radius: 999px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    nav li a:hover {
-      background: #e91e63;
-      color: #fff;
-    }
-
-    /* البانر الرئيسي */
-    .hero {
-      background: linear-gradient(135deg, #e91e63, #ff9a9e);
-      color: #fff;
-      padding: 3rem 1rem 3.5rem;
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      max-width: 520px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 1.4rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: transform 0.15s, box-shadow 0.15s, background 0.2s, color 0.2s;
-    }
-
-    .btn-primary {
-      background: #fff;
-      color: #e91e63;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-    }
-
-    .btn-outline {
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.7);
-      color: #fff;
-    }
-
-    .btn-outline:hover {
-      background: #fff;
-      color: #e91e63;
-    }
-
-    .hero-box {
-      background: rgba(255,255,255,0.16);
-      border-radius: 1.4rem;
-      padding: 1.5rem;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.15);
-    }
-
-    .hero-box h2 {
-      font-size: 1.1rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-box ul {
-      list-style: none;
-      font-size: 0.9rem;
-    }
-
-    .hero-box ul li {
-      margin-bottom: 0.4rem;
-    }
-
-    /* الأقسام العامة */
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-    }
-
-    section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.25rem;
-    }
-
-    section .section-subtitle {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 1.5rem;
-    }
-
-    /* شبكة الأقسام */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 1.2rem;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    /* قسم الخدمات */
-    .services-list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service {
-      background: #fff;
-      border-radius: 1.2rem;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      font-size: 0.9rem;
-    }
-
-    .service-title {
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-    }
-
-    /* قسم من نحن */
-    .about-wrapper {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .about-box {
-      background: #fff;
-      border-radius: 1.2rem;
-      padding: 1.2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      font-size: 0.9rem;
-    }
-
-    .about-box ul {
-      list-style: disc;
-      padding-right: 1.1rem;
-    }
-
-    .about-box ul li {
-      margin-bottom: 0.4rem;
-    }
-
-    /* تواصل معنا */
-    .contact-wrapper {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    form {
-      background: #fff;
-      border-radius: 1.2rem;
-      padding: 1.2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      font-size: 0.9rem;
-    }
-
-    .field {
-      margin-bottom: 0.9rem;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.2rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    input, textarea {
-      width: 100%;
-      border-radius: 0.8rem;
-      border: 1px solid #ddd;
-      padding: 0.55rem 0.7rem;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border 0.15s, box-shadow 0.15s;
-      resize: vertical;
-      min-height: 40px;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #e91e63;
-      box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.15);
-    }
-
-    textarea {
-      min-height: 120px;
-    }
-
-    .contact-info {
-      font-size: 0.9rem;
-      background: #fff;
-      border-radius: 1.2rem;
-      padding: 1.2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-
-    .contact-info p {
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-info strong {
-      display: inline-block;
-      min-width: 70px;
-    }
-
-    footer {
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #777;
-    }
-
-    /* ريسبونسيف للموبايل */
-    @media (max-width: 900px) {
-      .hero-inner,
-      .about-wrapper,
-      .contact-wrapper {
-        grid-template-columns: minmax(0, 1fr);
+  </style>  <!-- Structured Data (JSON-LD) -->  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية",
+    "image":"/assets/hero.jpg",
+    "telephone":"+201080135453",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"قريب منك",
+      "addressCountry":"EG"
+    },
+    "priceRange":"",
+    "description":"خدمات صيانة الأجهزة الرياضية والكهربائية، ضمان 6 أشهر، دعم فني 24/7، قطع غيار أصلية.",
+    "sameAs":[],
+    "contactPoint":[
+      {
+        "@type":"ContactPoint",
+        "telephone":"+201080135453",
+        "contactType":"customer service",
+        "areaServed":"EG",
+        "availableLanguage":["Arabic"]
       }
-      .hero {
-        padding-top: 2.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        justify-content: center;
-      }
-      .grid,
-      .services-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 520px) {
-      .grid,
-      .services-list {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
-</head>
+    ]
+  }
+  </script></head>
 <body>
-
-  <!-- الهيدر -->
   <header>
-    <div class="nav-container">
-      <div class="logo">MY <span>WEBSITE</span></div>
-      <nav>
-        <ul>
-          <li><a href="#home">الرئيسية</a></li>
-          <li><a href="#sections">الأقسام</a></li>
-          <li><a href="#services">الخدمات</a></li>
-          <li><a href="#about">من نحن</a></li>
-          <li><a href="#contact">تواصل معنا</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- الرئيسية -->
-  <section class="hero" id="home">
-    <div class="hero-inner">
-      <div>
-        <h1>موقع متعدد الأقسام يناسب شغلك أونلاين</h1>
-        <p>
-          هنا تقدر تعرض أقسام مختلفة (منتجات – خدمات – مقالات – أي حاجة) في مكان واحد بشكل منظم وسهل على الزائر يوصل للي هو عايزه.
-        </p>
-        <div class="hero-buttons">
-          <button class="btn btn-primary" onclick="document.getElementById('sections').scrollIntoView({behavior:'smooth'})">
-            تصفّح الأقسام
-          </button>
-          <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-            تواصل معنا الآن
-          </button>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">
+          <!-- استبدل هذا باللوجو الحقيقي (SVG أو PNG) -->
+          <h1>الشركة الهندسية لصيانة الأجهزة الرياضية<br><small style="color:var(--muted);font-weight:600">للأجهزة الرياضية والكهربائية</small></h1>
+        </div>
+        <div style="margin-inline-start:auto;display:flex;gap:12px;align-items:center">
+          <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank" rel="noopener">📞 تواصل عبر واتساب</a>
         </div>
       </div>
-
-      <div class="hero-box">
-        <h2>مميزات الموقع:</h2>
-        <ul>
-          <li>تصميم بسيط ومرتب.</li>
-          <li>يدعم الموبايل والكمبيوتر.</li>
-          <li>أقسام متعددة تقدر تعدّلها زي ما تحب.</li>
-          <li>قسم تواصل لمعرفة طلبات العملاء.</li>
-        </ul>
-      </div>
     </div>
-  </section>
-
-  <!-- الأقسام -->
-  <section id="sections">
-    <h2>الأقسام الرئيسية</h2>
-    <p class="section-subtitle">يمكنك تغيير أسماء الأقسام حسب نشاطك.</p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>قسم المنتجات</h3>
-        <p>يعرض كل المنتجات أو البضاعة اللي بتقدمها مع صور وأسعار ووصف لكل منتج.</p>
-      </div>
-      <div class="card">
-        <h3>قسم العروض</h3>
-        <p>مكان مخصص للعروض والخصومات علشان تحفز العميل يشتري بسرعة.</p>
-      </div>
-      <div class="card">
-        <h3>قسم المقالات / المدونة</h3>
-        <p>مقالات ونصايح مرتبطة بمجال شغلك علشان تزود ثقة العملاء فيك.</p>
-      </div>
-      <div class="card">
-        <h3>قسم الأعمال السابقة</h3>
-        <p>معرض أعمال يوضح شغلك اللي نفذته لعملاء قبل كده (صور، وصف، تقييمات).</p>
-      </div>
-      <div class="card">
-        <h3>قسم الأسئلة الشائعة</h3>
-        <p>إجابات على الأسئلة المتكررة علشان توفّر وقتك وتسهّل الفهم على الزائر.</p>
-      </div>
-      <div class="card">
-        <h3>قسم أي شيء آخر</h3>
-        <p>تقدر تغيّر الاسم ده وتحطه لأي قسم محتاجه يناسب نشاطك.</p>
-      </div>
+  </header>  <main class="container">
+    <section class="hero">
+      <div class="cta">
+        <h2>صيانة احترافية للأجهزة الرياضية — فريق مهندسين معتمد</h2>
+        <p style="color:var(--muted)">ضمان 6 أشهر على أعمال الصيانة. دعم فني متاح على مدار الساعة. نوصل أي مكان حيثما كنت.</p><div style="margin-top:18px;display:flex;gap:12px">
+      <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank" rel="noopener">📞 تواصل عبر واتساب</a>
+      <a href="#contact" style="padding:12px 16px;border-radius:8px;border:1px solid var(--accent);text-decoration:none;font-weight:700">اطلب خدمة الآن</a>
     </div>
-  </section>
 
-  <!-- الخدمات -->
-  <section id="services">
-    <h2>الخدمات</h2>
-    <p class="section-subtitle">عرّف عملاءك بالخدمات اللي بتقدمها بشكل مختصر وواضح.</p>
-
-    <div class="services-list">
-      <div class="service">
-        <div class="service-title">خدمة 1</div>
-        نوفر خدمة مميزة رقم 1 مع شرح بسيط عن تفاصيل الخدمة وطريقة الاستفادة منها.
-      </div>
-      <div class="service">
-        <div class="service-title">خدمة 2</div>
-        وصف مختصر لخدمة رقم 2، مثلاً تصميم مواقع، إدارة صفحات، أو أي خدمة أخرى.
-      </div>
-      <div class="service">
-        <div class="service-title">خدمة 3</div>
-        اكتب هنا الخدمة الثالثة اللي بتقدمها مع المميزات اللي بتميزك عن المنافسين.
-      </div>
+    <div style="margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+      <div class="card"><h3>ضمان 6 أشهر</h3><p>نقدّم ضمانًا على جميع خدماتنا لمدة 6 أشهر.</p></div>
+      <div class="card"><h3>دعم فني 24/7</h3><p>فريقنا جاهز للرد أثناء اليوم كله.</p></div>
+      <div class="card"><h3>نوصلك أي مكان</h3><p>خدمة ميدانية في جميع المحافظات.</p></div>
+      <div class="card"><h3>مهندسين ذوي كفاءة</h3><p>فريق مؤهل لصيانة الأجهزة الحديثة.</p></div>
     </div>
-  </section>
 
-  <!-- من نحن -->
-  <section id="about">
+  </div>
+  <div>
+    <img src="/assets/hero.jpg" alt="فريق صيانة الأجهزة الرياضية الحديثة">
+  </div>
+</section>
+
+<section id="service-area" style="margin-top:20px">
+  <div class="card">
+    <h2>صيانة أجهزة رياضية فى القاهرة وجميع المحافظات</h2>
+    <p>هل لديك مشكلة مع أي نوع من الأجهزة الرياضية؟ هل أنت من سكان القاهرة؟ لا تتردد فى التواصل معنا ليصلك مهندسو وفنيو الشركة الهندسية لصيانة الأجهزة الرياضية حتى باب البيت فى أسرع وقت.</p>
+    <p>فريق المهندسين والفنيين لدينا مجهز ومدرب على التعامل مع كافة أنواع الأجهزة الرياضية، مع توفير قطع غيار أصلية تتميز بطول العمر الافتراضى، بالإضافة إلى وجود وسائل نقل خاصة لنقل الأجهزة إلى مركز الصيانة فى حالة الحاجة إلى ذلك.</p>
+  </div>
+</section>
+
+<section id="about" style="margin-top:20px">
+  <div class="card">
     <h2>من نحن</h2>
-    <p class="section-subtitle">نبذة بسيطة عن نشاطك ورؤيتك.</p>
+    <p>تعتمد الشركة الهندسية لصيانة الاجهزة الرياضية فى الأساس على معيار الجودة ورضا العملاء وتجد ذلك ملموسا من بداية اتصالك بخدمة العملاء حتى إنتهاء الفنى من صيانة منتجك، فنحن نقدم الحلول المثلى لعملائنا حتى نحوز على رضاهم ولنساعدهم للوصول الى نمط حياة أفضل.</p>
+    <p>إضافة إلى ذلك فنحن فى مراكز خدمة عملاء الشركة الهندسية لصيانة الاجهزة الرياضية نسعى لإضافة عملاء جدد فى سجل عملائنا الذين نفخر بانضمامهم إلىنا.</p>
+  </div>
+</section>
 
-    <div class="about-wrapper">
-      <div class="about-box">
-        <p>
-          نص تعريفي عن نشاطك / شركتك: من أنتم؟ بتقدموا إيه؟ وما الهدف من الموقع؟
-        </p>
-        <br />
-        <p>يمكنك مثلاً كتابة:</p>
-        <ul>
-          <li>نحن فريق متخصص في تقديم خدمات رقمية ومنتجات عالية الجودة.</li>
-          <li>هدفنا تسهيل الوصول لمنتجاتنا وخدماتنا أونلاين من أي مكان.</li>
-          <li>نعمل على توفير تجربة مريحة وسهلة لعملائنا في التصفح والشراء.</li>
+<section style="margin-top:26px">
+  <div class="two-col">
+    <div>
+      <div class="article">
+        <h2>نصائح يجب أن تعرفها قبل شراء الأجهزة الرياضية</h2>
+        <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
+          <img src="https://images.unsplash.com/photo-1599058918144-14a0abbe3a5f?auto=format&fit=crop&w=900&q=90" alt="نصائح قبل شراء الأجهزة الرياضية" style="width:260px; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+          <div style="flex:1; line-height:1.9; font-size:15px; color:#444;">
+            <p>● يجب فحص الجهاز جيدًا قبل شرائه، فغالبًا تبدو الأجهزة الرياضية ممتازة في الدقائق الأولى، لكن الخلل يظهر عند التجربة الطويلة مثل الاهتزاز أو الأصوات المزعجة. يُفضل اختبار الجهاز لمدة لا تقل عن 20 دقيقة قبل قرار الشراء.</p>
+            <p>● لا تهمل متابعة الجديد في الأسواق، واحرص على شراء الأجهزة من أماكن متخصصة فقط، فالأجهزة المقلدة لا تدوم طويلًا وقد تسبب أعطالًا متكررة.</p>
+            <p>● بعض الأجهزة تبدو سهلة عند مشاهدتها على التلفاز لكنها قد لا تناسبك. مثلًا جهاز التزلج يمنح تدريبًا شاملًا لكنه يحتاج تركيزًا وتناسقًا أكبر، بينما يفضل كثيرون الأجهزة سهلة الاستخدام.</p>
+            <p>● عند شراء أجهزة لتقوية العضلات، اختر جهازًا سهل التركيب، لأن الأجهزة المعقدة غالبًا لا يتم استخدامها بالشكل الكافي.</p>
+            <p>● رغم أن جهاز المشي هو الأكثر انتشارًا، إلا أن الدراجة الثابتة وجهاز الدواسات خيارات ممتازة أيضًا لرفع اللياقة البدنية.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="article" style="margin-top:18px">
+        <h2>مقالات عن صيانة الأجهزة الرياضية</h2>
+        <p class="muted">دليل الصيانة الدوري وكيف تقلل تكاليف الإصلاح.</p>
+        <ul class="blog-list">
+          <li><a href="#">صيانة جهاز المشي خطوة بخطوة</a></li>
+          <li><a href="#">تنظيف الأجهزة وكيف يؤثر على عمرها</a></li>
         </ul>
       </div>
-      <div class="about-box">
-        <p><strong>رؤيتنا:</strong> أن نكون الخيار الأول لعملائنا في مجالنا.</p>
-        <p><strong>رسالتنا:</strong> تقديم حلول بسيطة وفعّالة تساعدك تنقل شغلك أونلاين.</p>
-      </div>
     </div>
-  </section>
 
-  <!-- تواصل معنا -->
-  <section id="contact">
+    <aside>
+      <div class="card">
+        <h3>قطع غيار أصلية</h3>
+        <p>نوفر قطع غيار أصلية ومضمونة للأجهزة الرياضية.</p>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3>اطلب معاينة</h3>
+        <p>ارسل رقم جهازك والمشكلة عبر واتساب وسنرد عليك.</p>
+        <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank">ارسال رسالة</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="contact" style="margin-top:28px">
+  <div class="card">
     <h2>تواصل معنا</h2>
-    <p class="section-subtitle">املأ النموذج أو تواصل مباشرة عبر الواتساب أو الهاتف.</p>
-
-    <div class="contact-wrapper">
-      <form>
-        <div class="field">
-          <label for="name">الاسم</label>
-          <input type="text" id="name" placeholder="اكتب اسمك" />
-        </div>
-        <div class="field">
-          <label for="phone">رقم الموبايل</label>
-          <input type="tel" id="phone" placeholder="اكتب رقم هاتفك" />
-        </div>
-        <div class="field">
-          <label for="message">الرسالة</label>
-          <textarea id="message" placeholder="اكتب طلبك أو استفسارك"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
-      </form>
-
-      <div class="contact-info">
-        <p><strong>الهاتف:</strong> 01000000000</p>
-        <p><strong>واتساب:</strong> 01000000000</p>
-        <p><strong>الإيميل:</strong> example@mail.com</p>
-        <p><strong>العنوان:</strong> اكتب عنوانك هنا (اختياري)</p>
+    <p class="muted">رقم الواتساب: <strong>01080135453</strong></p>
+    <form action="#" onsubmit="event.preventDefault();alert('تم إرسال الطلب — تواصل عبر واتساب الآن');">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <input required placeholder="الاسم" style="padding:10px;border-radius:8px;border:1px solid #e6e9ef">
+        <input required placeholder="الهاتف" style="padding:10px;border-radius:8px;border:1px solid #e6e9ef">
       </div>
+      <textarea placeholder="وصف المشكلة أو الرسالة" style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #e6e9ef"></textarea>
+      <div style="margin-top:10px;display:flex;gap:10px">
+        <button type="submit" style="padding:12px 18px;border-radius:8px;border:none;background:var(--accent);color:#fff">أرسل</button>
+        <a class="whatsapp-btn" href="https://wa.me/201080135453" target="_blank">ارسال عبر واتساب</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> الشركة الهندسية لصيانة الأجهزة الرياضية والأجهزة الكهربائية — جميع الحقوق محفوظة.</p>
+      <p>العنوان: متاح عند الطلب | الهاتف: 01080135453</p>
     </div>
-  </section>
-
-  <footer>
-    © 2025 - موقع متعدد الأقسام – يمكنك تعديل الاسم والحقوق كما تشاء.
-  </footer>
-
-</body>
+  </footer>  <script>
+    document.getElementById('year').innerText = new Date().getFullYear();
+  </script></body>
 </html>
